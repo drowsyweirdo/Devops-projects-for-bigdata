@@ -1,29 +1,28 @@
-name: health_app
+name: heath-app
 on:
   push:
     branches:
     - main
 jobs:
-  health_app:
+  health-app:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    
+
     - name: Setup docker
       uses: docker/setup-buildx-action@v1
-    
-    - name: login into dockerhub
+
+    - name: Login into dockerhub
       uses: docker/login-action@v2
-      write:
+      with:
         username: ${{secrets.dockerhub_username}}
         password: ${{secrets.dockerhub_password}}
-    - name: Build + push
+
+    - name: Build + Push
       uses: docker/build-push-action@v4
       with:
         context: .
         push: true
-        tags: harshavardhan7089/healcareapp:latest
-
-
+        tags: hkseal/health-app-streamlit:latest

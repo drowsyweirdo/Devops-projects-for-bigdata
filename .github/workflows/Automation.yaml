@@ -1,4 +1,4 @@
-name: heath-app
+name: health-app
 on:
   push:
     branches:
